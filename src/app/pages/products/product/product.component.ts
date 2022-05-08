@@ -1,22 +1,35 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy } from '@angular/compiler';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../interface/product.interface';
 
 @Component({
   selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  template: `
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>
+          {{ product.name }}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        {{ product.description }}
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" (click)="onClick()">
+          Buy {{ product.price | currency }}
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  `,
+  styleUrls: ['./product.component.scss'],
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent {
   @Input() product!: Product;
   @Output() addToCartClick = new EventEmitter<Product>();
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  onClick() : void{
+  onClick(): void {
     this.addToCartClick.emit(this.product);
   }
-
 }
