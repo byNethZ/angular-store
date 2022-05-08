@@ -39,4 +39,8 @@ export class CheckoutComponent implements OnInit {
     console.log(value);
   }
 
+  onSubmit() : void {
+    console.log('Guardar')
+  }
+
 }

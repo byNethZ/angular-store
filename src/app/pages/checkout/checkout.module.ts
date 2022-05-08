@@ -6,11 +6,13 @@ import { CheckoutComponent } from './checkout.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
   declarations: [
-    CheckoutComponent
+    CheckoutComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,
