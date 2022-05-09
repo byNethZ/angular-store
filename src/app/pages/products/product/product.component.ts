@@ -15,7 +15,7 @@ import { Product } from '../interface/product.interface';
         {{ product.description }}
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="primary" (click)="onClick()">
+        <button mat-flat-button color="primary" (click)="onClick()" [disabled]="product.stock === 0" >
           Buy {{ product.price | currency }}
           <mat-icon>add_shopping_cart</mat-icon>
         </button>
